@@ -1,0 +1,51 @@
+// Myanmar month names
+export const myanmarMonths = [
+  'Tagu',
+  'Kason',
+  'Nayon',
+  'Waso',
+  '2nd Waso',
+  'Wagaung',
+  'Tawthalin',
+  'Thadingyut',
+  'Tazaungmon',
+  'Nadaw',
+  'Pyatho',
+  'Tabodwe',
+  'Tabaung'
+]
+
+
+// Myanmar days with moon phases
+export const myanmarDays = [
+  'Waxing 1nd',
+  'Waxing 2rd',
+  'Waxing 3th',
+  'Waxing 4th',
+  'Waxing 5th',
+  'Waxing 6th',
+  'Waxing 7th',
+  'Waxing 8th',
+  'Waxing 9th',
+  'Waxing 10th',
+  'Waxing 11th',
+  'Waxing 12th',
+  'Waxing 13th',
+  'Waxing 14th',
+  'Full Moon',
+  'Waning 1st',
+  'Waning 2nd',
+  'Waning 3rd',
+  'Waning 4th',
+  'Waning 5th',
+  'Waning 6th',
+  'Waning 7th',
+  'Waning 8th',
+  'Waning 9th',
+  'Waning 10th',
+  'Waning 11th',
+  'Waning 12th',
+  'Waning 13th',
+  'Waning 14th',
+  'New Moon',
+]

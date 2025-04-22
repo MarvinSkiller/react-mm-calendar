@@ -1,0 +1,138 @@
+.result-container {
+  padding: var(--space-5);
+  background-color: #f9f4e8;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  animation: slideUp 0.6s ease-out;
+}
+
+.result-card {
+  background-color: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.result-card h2 {
+  color: var(--color-secondary);
+  margin-bottom: var(--space-4);
+  position: relative;
+  display: inline-block;
+}
+
+.result-card h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 3px;
+}
+
+.result-section {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background-color: #f9f9f9;
+}
+
+.result-label {
+  font-weight: 600;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-2);
+}
+
+.result-value {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.date-value {
+  color: var(--color-text);
+}
+
+.age-section {
+  background-color: #fff4db;
+  border: 2px solid var(--color-primary-light);
+}
+
+.age-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.age-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.age-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.birthday-message {
+  margin-top: var(--space-4);
+}
+
+.birthday-alert {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding: var(--space-3);
+  background-color: #fffaeb;
+  border-radius: var(--radius-md);
+  animation: pulse 2s infinite;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .result-container {
+    padding: var(--space-3);
+  }
+  
+  .result-card {
+    padding: var(--space-3);
+  }
+  
+  .age-number {
+    font-size: 2rem;
+  }
+  
+  .age-text {
+    font-size: 1rem;
+  }
+}
