@@ -21,11 +21,8 @@ export const convertToGregorian = (myanmarYear, myanmarMonth, myanmarDay) => {
     monthsString = myanmarMonths[myanmarMonth -2]
   }
   // Format the Myanmar date string in a way compatible with mcal.toGregorian
-  const formattedMyanmarDate = `${myanmarDay} ${monthsString}, ${myanmarYear -1}`;
+  const formattedMyanmarDate = `${myanmarDay} ${monthsString}, ${myanmarYear}`;
   const result = mcal.toGregorian(formattedMyanmarDate);
-  console.log(formattedMyanmarDate);
-  console.log(result);
-  console.log(mcal.toGregorian('35 Waso, 1354'))
   return result
 }
 
