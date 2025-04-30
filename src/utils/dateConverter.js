@@ -1,29 +1,46 @@
-// This is a simplified implementation of Myanmar calendar to Gregorian conversion
-// In a production environment, a more comprehensive library would be recommended
 
-/**
- * Converts Myanmar calendar date to Gregorian date
- * Note: This is a simplified implementation for educational purposes
- * 
- * @param {number} myanmarYear - Myanmar year
- * @param {number} myanmarMonth - Myanmar month (1-12)
- * @param {number} myanmarDay - Myanmar day (1-30)
- * @returns {Date} - JavaScript Date object representing Gregorian date
- */
-import  mcal  from 'myanmar-calendar';
 import {myanmarMonths} from "./calendarData";
+import { MyanmarDate, MyanmarMonths, MyanmarMonthType, MoonPhase } from 'mm-calendar';
 
 
 export const convertToGregorian = (myanmarYear, myanmarMonth, myanmarDay) => {
-  var monthsString = myanmarMonths[myanmarMonth -1]
-  if(monthsString === '2nd Waso'){
-    myanmarDay = myanmarDay + 30
-    monthsString = myanmarMonths[myanmarMonth -2]
+  const monthsString = myanmarMonths[myanmarMonth-1];
+  const monthValue = MyanmarMonths[monthsString];
+
+  let moonPhase;
+
+  switch (true) {
+    case (myanmarDay < 15):
+      moonPhase = MoonPhase.waxing;
+      break;
+    case (myanmarDay === 15):
+      moonPhase = MoonPhase.fullMoon;
+      break;
+    case (myanmarDay > 15 && myanmarDay < 30):
+      moonPhase = MoonPhase.waning;
+      break;
+    case (myanmarDay === 30):
+      moonPhase = MoonPhase.newMoon;
+      break;
+    default:
+      moonPhase = null; // Or throw an error if invalid day
   }
-  // Format the Myanmar date string in a way compatible with mcal.toGregorian
-  const formattedMyanmarDate = `${myanmarDay} ${monthsString}, ${myanmarYear}`;
-  const result = mcal.toGregorian(formattedMyanmarDate);
-  return result
+
+  const fortnightDay = myanmarDay > 15 ? myanmarDay -15 : myanmarDay;
+
+  const date1 = MyanmarDate.fromMyanmarDate({
+    year: myanmarYear,
+    month: monthValue,
+    day: fortnightDay,
+    moonPhase: moonPhase,
+    myanmarMonthType: MyanmarMonthType.oo,
+    fortnightDay: fortnightDay,
+  }, { lang: 'en' })
+
+  const gregorianDate = date1.toGregorian()
+  console.log(gregorianDate.year, gregorianDate.month, gregorianDate.day)
+
+  return new Date(gregorianDate.year, gregorianDate.month -1, gregorianDate.day)
 }
 
 /**
