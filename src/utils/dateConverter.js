@@ -1,4 +1,3 @@
-
 import {myanmarMonths} from "./calendarData";
 import { MyanmarDate, MyanmarMonths, MyanmarMonthType, MoonPhase } from 'mm-calendar';
 
@@ -23,7 +22,7 @@ export const convertToGregorian = (myanmarYear, myanmarMonth, myanmarDay) => {
       moonPhase = MoonPhase.newMoon;
       break;
     default:
-      moonPhase = null; // Or throw an error if invalid day
+      throw new Error('Invalid day.'); // Or throw an error if invalid day
   }
 
   const fortnightDay = myanmarDay > 15 ? myanmarDay -15 : myanmarDay;
@@ -38,7 +37,6 @@ export const convertToGregorian = (myanmarYear, myanmarMonth, myanmarDay) => {
   }, { lang: 'en' })
 
   const gregorianDate = date1.toGregorian()
-  console.log(gregorianDate.year, gregorianDate.month, gregorianDate.day)
 
   return new Date(gregorianDate.year, gregorianDate.month -1, gregorianDate.day)
 }
